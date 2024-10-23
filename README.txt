@@ -77,5 +77,4 @@ Make sure to compile it every time!
 
 Code first constructed by 354ika (Hong Fulin).
 
-The author(s) are not liable for any kind of physical (burning computer) or emotional damage (as a result of frustration) caused to
-anyone who chooses to use this program or derivative works of this program.
+The author(s) are not liable for any kind of physical (burning computer) or emotional damage (as a result of frustration) caused to anyone who chooses to use this program or derivative works of this program.
