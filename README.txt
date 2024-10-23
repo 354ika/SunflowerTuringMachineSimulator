@@ -1,4 +1,7 @@
-To run the program, go into /bin/<system> and drag out some executables.
+To run the program, make sure your current directory contains
+<Intape.txt>, <Machine.txt> and <Outtape.txt>.
+
+Then just use ./<Path to program>/Output+.exe to run it!
 
 If you want to compile the binaries yourself, go to /src.
 
