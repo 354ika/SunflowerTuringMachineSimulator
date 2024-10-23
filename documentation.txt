@@ -1,0 +1,111 @@
+Documentation for STMS:
+
+0. Background
+
+
+A Turing Machine is an extremely simple kind of machine designed to carry out simple tasks.
+However, when properly configured, they are as computationally capable as any computer we can build (sans the efficiency)
+Recommended reading: https://en.wikipedia.org/wiki/Turing_machine
+
+This simulator works with 3 input symbols {0, 1, 2} along with the blank {3, but outputted as \0}.
+
+
+1. Program directories
+
+
+/bin          : Contains all the pre-compiled binaries, and the machine environment (Intape, Machine, Outtape)
+/machines     : Contains some pre-built Turing Machines in the recommended format.
+/old_version  : Contains an old copy of the TM simulator code.
+/src          : Contains the source code. Modify and recompile if you want.
+
+
+2. Recommended system environments
+
+
+2.0: A 64bit system. The code might work on a 32bit system. If in doubt, compile the code again.
+
+2.1: A machine that can run machine code / ideally is able to compile C code too.
+
+2.2: ~10MB RAM + ~20MB disk space to be safe during operation. The original folder is at most 1MB.
+     (It probably never uses that much space unless you misconfigured something, but just to be safe.)
+     The machine can call an arbitrarily high memory allocation if it moves far enough to the right.
+     Please make sure your machine doesn't go to the right side forever (configurable via cmdline)
+
+2.3: A sane processor clock speed. For most purposes 10MHz ~ 100MHz might be enough but don't quote me on that.
+
+
+3. The I/O, and the Machine.
+
+The Turing Machine presented here consists of 3 parts:
+(Input tape), (Machine), (Output tape).
+
+In reality the machine works with only one tape. (However the output tape is used so that the input may be configured and will not be overwritten.)
+The machine and the intape is read into the program. The simulator then executes a Turing Machine step by step until it halts, or an error occurs.
+Then execution ceases, and the output is printed to the outtape file.
+
+3.1: The input tape </bin/Intape.txt>
+     The input tape is the input for the machine. It feeds the initial state to the machine.
+
+3.2: The machine </bin/Machine.txt>
+     This is the code of the machine. It encodes the program to be executed, in a csv-like way.
+     A typical state might look like:
+
+     10,3,12,1,14,2,15,0 # // % Comment here
+
+     The 8 values separated as csv contain the transition information. The 1, 3, 5, 7th values indicate which state the machine will move to upon reading a 0, 1, 2, '\0' respectively, and the 2, 4, 6, 8th values indicate what characters the machine will write in that case.
+
+     Special states: -1 indicated no transition. Machine will crash if forced to make this transition.
+     Special characters: 'L' and 'R' won't write anything, but makes the machine move its read/write head. '3' indicates to write a '\0' (blank).
+
+     If the machine cannot resolve the character to write, it will crash and halt.
+
+3.3: The output tape </bin/Outtape.txt>
+     This is the output of the machine after it halts or errs.
+
+
+4. The command line programs.
+
+4.1: Output+.exe (output.exe)
+This is the Turing Machine simulator. It should be invoked while you're in a directory containing the input, output and machine.
+It can be used with 2 optional command line arguments.
+
+./<path>/Output+.exe (ull_iterations) (int_states)
+
+Starts the simulator, and runs it until it halts or (int_iterations) iterations. Allow the machine to have at most (int_states) states.
+(ull_iterations) is unsigned so use -1 if you want to run it for a long time.
+
+Possible outputs / Errors:
+     Computation completed: Head is parked and the final state is the halting state (err 0)
+     Computation semicompleted: The final state is reached, but the head is not parked (err ?)
+     Machine halted: The final state is not reached, and the transition is to 'state -1' (err 1)
+     Machine fell off the left: Inadmissible configuration reached (err 2)
+     Out of memory: A memory allocation failed while the machine is running (err 3)
+     Illegal character: An unknown character was read, and the program terminated (err 4)
+     Machine times out: Machine execution took too long (err 5)
+
+     A somewhat descriptive error message will be given if the machine failed.
+
+4.2: IntapeWriter.exe
+This program can be used to quickly write a pattern on the input tape. It should be recompiled on use.
+
+4.3: Stateshifter.exe
+This is a program to shift all the states in the machine by some fixed amount.
+This program must be used with 1 more command line argument.
+
+./<path>/Stateshifter.exe (int_shift)
+
+
+5. State conventions:
+
+5.1: The start state (state 0) is always on the first line.
+
+5.2: The final state is always on the last line. It must have -1 for all its outgoing transitions.
+
+5.3: The state number of any other line is its linenumber subtracted by 1.
+
+5.4: The comments do not affect TM execution, but only put them at the end.
+
+5.5: There is to be no blank space between lines.
+
+
+Thank you for reading the documentation. We hope you have fun with the machine simulator.
