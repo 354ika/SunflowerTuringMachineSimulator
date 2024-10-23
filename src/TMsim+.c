@@ -192,7 +192,7 @@ int main(int argc, char** argv)
     // Otherwise, a computation has been completed.
 
     if (headlocation == 0) { printf("The head was parked.\n"); if (returncode == 0) { printf("The computation completed after %llu iterations.\n", iteration); }}
-
+    else { printf("The computation semicompleted.\n"); printf("The halt state was reached on iteration %llu, but the machine head is at location %lli.\n", iteration, headlocation); }
     // Opens the outfile for writing.
 
     FILE* outfile = fopen("Outtape.txt","w"); if (outfile == NULL) { printf("An error occurred while writing to output!\n"); return -1;}
