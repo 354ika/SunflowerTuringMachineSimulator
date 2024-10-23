@@ -58,6 +58,7 @@ If you don't want the transition, write '-1' for the destination state number.
 An example of a state:
 
 43,1,43,2,43,3,44,0 # This is state 43. It will go to state 44 and write a 0 of it reads a blank.
+
 -1,3,-1,3,-1,3,-1,3 # This is state 44 and it looks like the halt state.
 
 
