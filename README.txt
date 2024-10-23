@@ -1,4 +1,9 @@
-To run the program, make sure your current directory contains
+SunflowerTuringMachineSimulator is a Turing Machine simulator supporting up to 3 symbols and a blank.
+It is entirely-commandline based, so it might seem like black box magic (And it kind of is). Some binaries are included in the /bin/<platform> folder if you don't want to compile anything, but the source code should be available in src.
+
+More information can be found in the documentation.txt file.
+
+To run the program, make sure your current directory contains a copy of
 <Intape.txt>, <Machine.txt> and <Outtape.txt>.
 
 Then just use ./<Path to program>/Output+.exe to run it!
@@ -6,7 +11,7 @@ Then just use ./<Path to program>/Output+.exe to run it!
 If you want to compile the binaries yourself, go to /src.
 
 
-TMsim+.c ---| Compile |--> output+.exe: The main Turing Machine simulator.
+TMsim+.c ---| Compile |--> output+.exe: The main Turing Machine simulator. Edit to configure which program the TM runs.
 
 Use with 1, 2 or 3 arguments.
 
@@ -19,17 +24,17 @@ Dependency: Reads from the input tape Intape.txt.
 Outputs the result to Outtape.txt.
 
 The machine's speed cannot be configured. It will always run at full speed.
-2 billion iterations takes approximately 10 ~ 20 seconds.
+2 billion iterations takes approximately 10 ~ 20 seconds, so runtime shouldn't be a concern.
 
 
 
-Intape.txt: The input tape for the Turing Machine.
+Intape.txt: The input tape for the Turing Machine. Edit to configure what the input to the TM will be.
 The input alphabet should be {'0', '1', '2'}.
 The tape alphabet is {'0', '1', '2', '\0'}. with '\0' denoting the blank.
 
 
 
-Outtape.txt: The output tape for the Turing Machine.
+Outtape.txt: The output tape for the Turing Machine. This is the output.
 The output should contain only {'0', '1', '2'}. '\0' will cut off the output.
 
 
@@ -79,4 +84,6 @@ Make sure to compile it every time!
 
 Code first constructed by 354ika (Hong Fulin).
 
-The author(s) are not liable for any kind of physical (burning computer) or emotional damage (as a result of frustration) caused to anyone who chooses to use this program or derivative works of this program.
+The author(s) are not liable for any kind of physical (burning computer) or emotional damage (as a result of frustration) caused to anyone who chooses to use this program or derivative works of this program, or the inability to recognize that, indeed, there are no sunflowers contained in this program.
+
+Have fun using / modding!
