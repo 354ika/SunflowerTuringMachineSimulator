@@ -6,7 +6,7 @@ typedef struct pair_t { int _int; char _char; } pair;
 
 typedef struct quadruplet_t { pair _read0; pair _read1; pair _read2; pair _read3; } state;
 
-long int init_memory = 1024; int max_states = 1024; 
+long long int init_memory = 1024; int max_states = 1024; 
 unsigned long long int instruction_limit = (long long)4294967295; // Hey! 2 ** 32 - 1 instructions not enough for you? Change via command line!
 char* memory; state* machine; char* space;
 
@@ -15,7 +15,7 @@ char* memory; state* machine; char* space;
 /// @return The memory sent, appended by an equal number of 0's.
 char* double_memory(char* mem)
 {
-    printf("Trying to increase memory from %li to %li...\n", init_memory, 2 * init_memory);
+    printf("Trying to increase memory from %lli to %lli...\n", init_memory, 2 * init_memory);
     mem = realloc(mem, 2 * init_memory); if (mem == NULL) { printf("Doubling memory failed!\n"); return NULL; }
 
     for (int j = init_memory; j < 2 * init_memory; j++)
@@ -106,7 +106,7 @@ int main(int argc, char** argv)
 
     // Simulates the Turing Machine.
 
-    int headlocation = 0; int currentindex = 0; char symbolread = '\0'; int haltstate = counter - 1;
+    long long int headlocation = 0; int currentindex = 0; char symbolread = '\0'; int haltstate = counter - 1;
     state currentstate; unsigned long long int iteration = 0; int returncode = 0;
 
     while (currentindex < haltstate)
@@ -158,6 +158,7 @@ int main(int argc, char** argv)
             currentindex = currentstate._read3._int;
         }
         else { returncode = -4; break;} // An illegal character was read.
+        if (memory == NULL) { returncode = -3; break; } // Out of memory. For real.
         iteration += 1; 
         if (iteration == instruction_limit) { returncode = -5; break; }
         // printf("%s\n", memory); // For debugging, we can ask it to print the memory.
@@ -178,7 +179,7 @@ int main(int argc, char** argv)
         else if (returncode == -4) { printf("Illegal character read. Terminating...\n"); }
         else if (returncode == -5) { printf("Machine timed out.\n"); }
         
-        printf("Error occurred on iteration %lli, memory location %i, while the machine was in state %i, reading character %c.\n", iteration, headlocation, currentindex, symbolread);
+        printf("Error occurred on iteration %llu, memory location %lli, while the machine was in state %i, reading character %c.\n", iteration, headlocation, currentindex, symbolread);
         /* Diagnostic dump written to tape. Uncomment to use.
         for (int j = 0; j < init_memory; j++)
         {
@@ -203,7 +204,7 @@ int main(int argc, char** argv)
     free(memory);
     free(machine);
 
-    printf("Total memory used: %li\n", init_memory);
+    printf("Total memory used: %lli\n", init_memory);
     return 0;
 }
 
