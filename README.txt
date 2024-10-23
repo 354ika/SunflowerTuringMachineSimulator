@@ -46,6 +46,8 @@ The syntax for each line is:
 The CSV must be exactly 8 columns. A comment can be written afterwards (It'll be ignored)
 
 The program assumes the state number is the linenumber. So state '0' will be present on the first line.
+state '0' is always assumed to be the start state, and
+the last line is always assumed to be the final state.
 
 If you don't want the transition, write '-1' for the destination state number.
 An example of a state:
