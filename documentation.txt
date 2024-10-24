@@ -20,9 +20,9 @@ This simulator works with 3 input symbols {0, 1, 2} along with the blank {3, but
 
 
 2. Recommended system environments
+Full disclaimer I don't actually know how to test it on a different system, so here's what I think you need.
 
-
-2.0: A 64bit system. The code might work on a 32bit system. If in doubt, compile the code again.
+2.0: The binaries are built for x86-64. I'll be seeing if I can rebuild it on different systems.
 
 2.1: A machine that can run machine code / ideally is able to compile C code too.
 
