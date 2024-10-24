@@ -6,6 +6,9 @@ More information can be found in the documentation.txt file.
 To run the program, make sure your current directory contains a copy of
 <Intape.txt>, <Machine.txt> and <Outtape.txt>.
 
+Change the permissions of the executables with
+chmod +x Output+.exe
+
 Then just use ./<Path to program>/Output+.exe to run it!
 
 If you want to compile the binaries yourself, go to /src.
