@@ -7,7 +7,7 @@ To run the program, make sure your current directory contains a copy of
 <Intape.txt>, <Machine.txt> and <Outtape.txt>.
 
 Change the permissions of the executables with
-chmod +x Output+.exe
+chmod +x Output+.exe (If per chance you're on linux. Windows could allow you to just double click it.)
 
 Then just use ./<Path to program>/Output+.exe to run it!
 
