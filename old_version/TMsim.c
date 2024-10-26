@@ -75,7 +75,7 @@ int main(void)
             else
             {
                 if (currentstate._read0._char == 'L') { headlocation -= 1; if (headlocation < 0) { returncode = -2; break; } } // Machine in inadmissible state.
-                else if (currentstate._read0._char == 'R') { headlocation += 1; if (headlocation > 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
+                else if (currentstate._read0._char == 'R') { headlocation += 1; if (headlocation >= 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
                 else { memory[headlocation] = currentstate._read0._char == '3' ? '\0' : currentstate._read0._char; } // Write into the location.
             }
             currentindex = currentstate._read0._int;
@@ -86,7 +86,7 @@ int main(void)
             else
             {
                 if (currentstate._read1._char == 'L') { headlocation -= 1; if (headlocation < 0) { returncode = -2; break; } } // Machine in inadmissible state.
-                else if (currentstate._read1._char == 'R') { headlocation += 1; if (headlocation > 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
+                else if (currentstate._read1._char == 'R') { headlocation += 1; if (headlocation >= 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
                 else { memory[headlocation] = currentstate._read1._char == '3' ? '\0' : currentstate._read1._char; } // Write into the location.
             }
             currentindex = currentstate._read1._int;
@@ -97,7 +97,7 @@ int main(void)
             else
             {
                 if (currentstate._read2._char == 'L') { headlocation -= 1; if (headlocation < 0) { returncode = -2; break; } } // Machine in inadmissible state.
-                else if (currentstate._read2._char == 'R') { headlocation += 1; if (headlocation > 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
+                else if (currentstate._read2._char == 'R') { headlocation += 1; if (headlocation >= 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
                 else { memory[headlocation] = currentstate._read2._char == '3' ? '\0' : currentstate._read2._char; } // Write into the location.
             }
             currentindex = currentstate._read2._int;
@@ -108,7 +108,7 @@ int main(void)
             else
             {
                 if (currentstate._read3._char == 'L') { headlocation -= 1; if (headlocation < 0) { returncode = -2; break; } } // Machine in inadmissible state.
-                else if (currentstate._read3._char == 'R') { headlocation += 1; if (headlocation > 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
+                else if (currentstate._read3._char == 'R') { headlocation += 1; if (headlocation >= 1024) { returncode = -3; break; } } // I guess we didn't give you enough memory...
                 else { memory[headlocation] = currentstate._read3._char == '3' ? '\0' : currentstate._read3._char; } // Write into the location.
             }
             currentindex = currentstate._read3._int;
